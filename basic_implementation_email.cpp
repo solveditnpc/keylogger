@@ -49,7 +49,7 @@ bool send_email(const std::string& message) {
         curl_easy_setopt(curl, CURLOPT_USERNAME, EMAIL_ADDRESS);
         curl_easy_setopt(curl, CURLOPT_PASSWORD, EMAIL_PASSWORD);
         
-        // Set up the email details
+        // these don't have to be set ,these are just for the smtp server ,it doesn't affect the email sending
         std::string from = "Private Person <from@example.com>";
         std::string to = "A Test User <to@example.com>";
         
