@@ -12,10 +12,7 @@ This implementation has been tested against major antivirus solutions and remain
 ![Antivirus Detection Results 1](images/antivirus1.png)
 
 ### Additional Scanner Results
-![Antivirus Detection Results 2](images/antivirus2.png)
-
-### Comprehensive Security Scan
-![Comprehensive Antivirus Results](images/antivirus.png)
+![Antivirus Detection Results 2](images/antivirus.png)
 
 ## Installation
 
@@ -80,7 +77,7 @@ This implementation has been tested against major antivirus solutions and remain
    ```
 
    Note: The `-mwindows` flag prevents the console window from appearing when running the program, making it more stealthy. Remove this flag during development/debugging to see console output.
-2. Create a temperary mail 
+2. Create a temporary mail 
 #### Create Temporary Email Using temp-mail.org
 ![Email Setup](images/email.png)
 
