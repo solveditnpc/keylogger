@@ -88,7 +88,7 @@ This implementation has been tested against major antivirus solutions and remain
 #### Create Temporary Email Using temp-mail.org
 
 1. Visit mailtrap.io and click "Sign Up"
-2. Choose "Sign up with email" ,you can use temperary email from temp-mail.org 
+2. Choose "Sign up with email" ,you can use temperary email from [temp-mail.org](https://temp-mail.org/)
 3. Once logged in, go to "Email Testing" → "Inboxes"
 4. In your inbox, find the SMTP credentials:
    - Click on "Show Credentials"
